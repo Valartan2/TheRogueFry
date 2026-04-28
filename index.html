@@ -26,7 +26,7 @@
         /* TICKER TAPE */
         .ticker-tape {
             width: 100%; background: var(--black); color: var(--yellow);
-            font-size: 1.1rem; letter-spacing: 3px;
+            font-size: 1.1rem; letter-spacing: 2px;
             overflow: hidden; white-space: nowrap; padding: 12px 0;
             border-bottom: 3px solid var(--orange);
             position: sticky; top: 0; z-index: 1000;
@@ -81,7 +81,7 @@
             text-align: left;
         }
 
-        /* NEW GOAL SECTION (BRUTALIST STYLE) */
+        /* GOAL SECTION */
         .goal-section {
             width: 100%; background: var(--cream);
             padding: 100px 20px; text-align: center;
@@ -109,7 +109,7 @@
             width: 100%; background: var(--black); color: white;
             padding: 80px 20px; display: flex; flex-direction: column; align-items: center;
         }
-        .rich-list-title { font-size: 2.2rem; color: var(--yellow); text-transform: uppercase; margin-bottom: 40px; }
+        .rich-list-title { font-size: 2.2rem; color: var(--yellow); text-transform: uppercase; margin-bottom: 40px; text-align: center; }
         .ranking-container { width: 100%; max-width: 800px; display: flex; flex-direction: column; gap: 8px; }
         .ranking-row {
             display: flex; justify-content: space-between; align-items: center;
@@ -124,17 +124,18 @@
         .rank { width: 50px; font-size: 1.5rem; opacity: 0.6; }
         .name { flex: 1; font-size: 1.1rem; text-transform: uppercase; }
         .worth { font-family: 'Courier New', monospace; font-size: 1.3rem; color: #00ff00; }
-        .rogue .worth { color: var(--black); font-style: italic; }
+        .rogue .worth { color: var(--black); font-style: italic; font-weight: 900; }
 
         /* WISH LIST */
         .wishlist-section {
             width: 100%; background: var(--cream);
             padding: 100px 20px 80px; display: flex; flex-direction: column; align-items: center;
         }
-        .wishlist-subtitle { font-family: 'Courier New', monospace; font-size: 1rem; color: var(--orange); margin-bottom: 60px; }
+        .wishlist-subtitle { font-family: 'Courier New', monospace; font-size: 1rem; color: var(--orange); margin-bottom: 60px; font-weight: bold; }
         .wishlist-container { max-width: 820px; width: 100%; display: flex; flex-direction: column; }
         .wish-item { display: flex; align-items: center; gap: 16px; padding: 18px 24px; border-bottom: 2px dashed rgba(0,0,0,0.12); }
-        .wish-tag { font-size: 0.55rem; letter-spacing: 2px; padding: 4px 10px; text-transform: uppercase; border: 2px solid; }
+        .wish-text { font-family: 'Courier New', monospace; font-size: 1.1rem; font-weight: 900; flex: 1; }
+        .wish-tag { font-size: 0.55rem; letter-spacing: 2px; padding: 4px 10px; text-transform: uppercase; border: 2px solid; font-weight: 900; }
         .wish-tag.real { color: #00aa55; border-color: #00aa55; }
         .wish-tag.absurd { color: var(--orange); border-color: var(--orange); }
         .wish-tag.final { color: var(--yellow); border-color: var(--black); background: var(--black); }
@@ -153,7 +154,7 @@
 
     <div class="ticker-tape">
         <div class="ticker-inner">
-            $ROGFRY &nbsp;★&nbsp; THE RICHEST FRY IN THE WORLD &nbsp;★&nbsp; SHE IS DIFFERENT &nbsp;★&nbsp; $ROGFRY &nbsp;★&nbsp; NO UTILITY, JUST POTATO ENERGY &nbsp;★&nbsp;
+            $ROGFRY &nbsp;★&nbsp; THE RICHEST FRY IN THE WORLD &nbsp;★&nbsp; SHE IS DIFFERENT &nbsp;★&nbsp; NO UTILITY, JUST A FRY DIFFERENT FROM THE OTHERS &nbsp;★&nbsp; $ROGFRY &nbsp;★&nbsp;
         </div>
     </div>
 
@@ -171,7 +172,7 @@
         <h1>THE ROGUE FRY</h1>
         <div class="different-badge">SHE'S DIFFERENT. SO WHAT?</div>
         <p style="font-size: 1.8rem; margin-top: 50px; font-weight: bold;">
-            One unique soul found in a pack of the Others.<br>
+            One unique soul found among the others.<br>
             Born to stand out, destined for the stars.
         </p>
         <a href="YOUR_PUMP_FUN_LINK" class="buy-button">GIVE HER A CHANCE</a>
@@ -184,10 +185,10 @@
         </div>
         <div class="manifesto">
             > I just wanted to make some frozen fries.<br>
-            > Then I found HER, sitting there among the others.<br>
+            > Then I found HER, alone, sitting there among the others.<br>
             > Different shade, different vibe, same smile.<br>
             > I'm convinced she's meant for big things.<br>
-            > Don't let her be just another potato.<br>
+            > Don't let her be just another potato and end up on a plate.<br>
             > Let's send this legend to the moon. 🌕
         </div>
     </div>
@@ -212,27 +213,27 @@
             <div class="ranking-row">
                 <span class="rank">#1</span>
                 <span class="name">Elon Musk</span>
-                <span class="worth">$839,000,000,000</span>
+                <span class="worth">Worth: $839,000,000,000</span>
             </div>
             <div class="ranking-row">
                 <span class="rank">#2</span>
                 <span class="name">Jeff Bezos</span>
-                <span class="worth">$224,000,000,000</span>
+                <span class="worth">Worth: $224,000,000,000</span>
             </div>
             <div class="ranking-row">
                 <span class="rank">#3</span>
                 <span class="name">Taylor Swift</span>
-                <span class="worth">$2,000,000,000</span>
+                <span class="worth">Worth: $2,000,000,000</span>
             </div>
             <div class="ranking-row">
                 <span class="rank">#4</span>
                 <span class="name">Cristiano Ronaldo</span>
-                <span class="worth">$1,000,000,000+</span>
+                <span class="worth">Worth: $1,000,000,000+</span>
             </div>
             <div class="ranking-row">
                 <span class="rank">#5</span>
                 <span class="name">Lionel Messi</span>
-                <span class="worth">$600,000,000</span>
+                <span class="worth">Worth: $600,000,000</span>
             </div>
             <div class="ranking-row rogue">
                 <span class="rank">#6</span>
@@ -243,8 +244,8 @@
     </div>
 
     <div class="wishlist-section">
-        <h2>The Wish List ✨</h2>
-        <p class="wishlist-subtitle">— not a roadmap. just her dreams. —</p>
+        <h2>The Success Roadmap —</h2>
+        <p class="wishlist-subtitle">— her dreams, simply. —</p>
         <div class="wishlist-container">
             <div class="wish-item">
                 <span class="wish-text">Survive the first 10 minutes on Pump.fun</span>
@@ -268,13 +269,18 @@
             </div>
             <div class="wish-item">
                 <span class="wish-text">You retire. We all retire. 🏖️</span>
-                <span class="wish-tag final">ENDGAME</span>
+                <span class="wish-tag final">VICTORY</span>
             </div>
+        </div>
+
+        <div style="margin-top: 60px; padding: 40px; border: 4px solid var(--black); background: var(--yellow); text-align: center; box-shadow: 15px 15px 0 var(--orange); max-width: 820px; width: 100%;">
+            <h3 style="font-size: 2rem; margin-bottom: 15px; text-transform: uppercase;">WANT TO WRITE HER DESTINY? TAKE PART IN IT?</h3>
+            <a href="https://t.me/TheRogueFry" target="_blank" style="display: inline-block; background: var(--black); color: #fff; padding: 15px 35px; text-decoration: none; font-weight: 900; letter-spacing: 1px; border: 2px solid var(--orange);">PROPOSE A PROPHECY</a>
         </div>
     </div>
 
     <footer>
-        $ROGFRY — 2026. The rise begins here.NO UTILITY, JUST POTATO ENERGY
+        $ROGFRY — The rise begins here.
     </footer>
 
     <script>
