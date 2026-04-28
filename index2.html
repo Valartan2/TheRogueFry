@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>THE ROGUE FRY | THE REBEL</title>
+    <style>
+        :root {
+            --yellow: #FFD700;
+            --orange: #FF4500;
+            --cream: #FFF9E5;
+            --black: #0A0A0A;
+        }
+
+        * { box-sizing: border-box; transition: all 0.3s ease; }
+
+        body {
+            margin: 0; padding: 0;
+            font-family: 'Arial Black', sans-serif;
+            background-color: var(--cream);
+            color: #000;
+            display: flex; flex-direction: column; align-items: center;
+            overflow-x: hidden;
+        }
+
+        /* TICKER TAPE */
+        .ticker-tape {
+            width: 100%; background: var(--black); color: var(--yellow);
+            font-size: 1.1rem; letter-spacing: 3px;
+            overflow: hidden; white-space: nowrap; padding: 12px 0;
+            border-bottom: 3px solid var(--orange);
+            position: sticky; top: 0; z-index: 1000;
+        }
+        .ticker-inner { display: inline-block; animation: ticker 25s linear infinite; }
+        @keyframes ticker { 0% { transform: translateX(0); } 100% { transform: translateX(-50%); } }
+
+        /* SOCIAL NAV */
+        .social-nav {
+            position: absolute; top: 80px; right: 25px;
+            display: flex; gap: 20px; z-index: 100;
+        }
+        .social-nav a {
+            background: #000; width: 50px; height: 50px; border-radius: 50%;
+            display: flex; align-items: center; justify-content: center;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+        .social-nav a:hover { transform: scale(1.1) rotate(5deg); background: var(--orange); }
+        .social-nav svg { width: 25px; height: 25px; fill: #FFF; }
+
+        /* HERO */
+        .hero { padding: 100px 20px 40px 20px; text-align: center; max-width: 900px; }
+        .ticker-float {
+            display: inline-block; font-size: 1.6rem; letter-spacing: 6px;
+            color: var(--orange); background: var(--black);
+            padding: 6px 22px; transform: rotate(-1.5deg);
+            margin-bottom: 20px; border: 3px solid var(--orange);
+        }
+        h1 { font-size: clamp(3rem, 10vw, 5.5rem); margin: 0; letter-spacing: -4px; line-height: 0.8; }
+        .different-badge {
+            background: var(--orange); color: white;
+            display: inline-block; padding: 15px 25px;
+            font-size: 1.8rem; transform: rotate(-3deg);
+            margin-top: 25px; box-shadow: 4px 4px 0 #000;
+        }
+
+        /* ORIGIN SECTION */
+        .evidence-section {
+            margin-top: 80px; padding: 80px 40px;
+            background: #000; color: #fff; width: 100%;
+            display: flex; flex-direction: column; align-items: center;
+        }
+        .photo-frame {
+            background: white; padding: 20px 20px 100px 20px;
+            transform: rotate(2deg); max-width: 450px; margin-bottom: 50px;
+            box-shadow: 0 10px 50px rgba(255,255,255,0.15);
+        }
+        .photo-frame img { width: 100%; display: block; }
+        .manifesto { 
+            max-width: 650px; font-size: 1.6rem; 
+            font-family: 'Courier New', monospace; line-height: 1.8;
+            text-align: left;
+        }
+
+        /* NEW GOAL SECTION (BRUTALIST STYLE) */
+        .goal-section {
+            width: 100%; background: var(--cream);
+            padding: 100px 20px; text-align: center;
+            border-top: 5px solid #000; border-bottom: 5px solid #000;
+        }
+        .goal-title {
+            font-size: 3rem; text-transform: uppercase;
+            margin-bottom: 40px; color: #000; letter-spacing: -2px;
+        }
+        .goal-text { font-size: 1.8rem; line-height: 1.4; font-weight: 900; margin-bottom: 40px; }
+        .goal-highlight {
+            background: var(--yellow); padding: 5px 15px; border: 3px solid #000;
+            display: inline-block; margin: 10px 0; transform: rotate(-1deg);
+            box-shadow: 8px 8px 0 var(--orange);
+        }
+        .goal-statement {
+            font-family: 'Courier New', monospace; font-weight: 900;
+            color: var(--orange); font-size: 2.2rem; text-transform: uppercase;
+            background: #000; padding: 20px; display: inline-block;
+            border: 3px solid var(--yellow); box-shadow: 12px 12px 0 rgba(0,0,0,0.1);
+        }
+
+        /* RANKING SECTION */
+        .rich-list-section {
+            width: 100%; background: var(--black); color: white;
+            padding: 80px 20px; display: flex; flex-direction: column; align-items: center;
+        }
+        .rich-list-title { font-size: 2.2rem; color: var(--yellow); text-transform: uppercase; margin-bottom: 40px; }
+        .ranking-container { width: 100%; max-width: 800px; display: flex; flex-direction: column; gap: 8px; }
+        .ranking-row {
+            display: flex; justify-content: space-between; align-items: center;
+            padding: 18px 25px; background: #111; border-radius: 5px;
+        }
+        .ranking-row.rogue {
+            background: var(--yellow); color: var(--black);
+            transform: scale(1.02); z-index: 10;
+            box-shadow: 0 0 40px rgba(255, 215, 0, 0.4);
+            font-weight: 900;
+        }
+        .rank { width: 50px; font-size: 1.5rem; opacity: 0.6; }
+        .name { flex: 1; font-size: 1.1rem; text-transform: uppercase; }
+        .worth { font-family: 'Courier New', monospace; font-size: 1.3rem; color: #00ff00; }
+        .rogue .worth { color: var(--black); font-style: italic; }
+
+        /* WISH LIST */
+        .wishlist-section {
+            width: 100%; background: var(--cream);
+            padding: 100px 20px 80px; display: flex; flex-direction: column; align-items: center;
+        }
+        .wishlist-subtitle { font-family: 'Courier New', monospace; font-size: 1rem; color: var(--orange); margin-bottom: 60px; }
+        .wishlist-container { max-width: 820px; width: 100%; display: flex; flex-direction: column; }
+        .wish-item { display: flex; align-items: center; gap: 16px; padding: 18px 24px; border-bottom: 2px dashed rgba(0,0,0,0.12); }
+        .wish-tag { font-size: 0.55rem; letter-spacing: 2px; padding: 4px 10px; text-transform: uppercase; border: 2px solid; }
+        .wish-tag.real { color: #00aa55; border-color: #00aa55; }
+        .wish-tag.absurd { color: var(--orange); border-color: var(--orange); }
+        .wish-tag.final { color: var(--yellow); border-color: var(--black); background: var(--black); }
+
+        .buy-button {
+            display: inline-block; background: var(--yellow); color: #000;
+            padding: 25px 60px; border-radius: 15px; font-size: 2rem;
+            font-weight: 900; text-decoration: none; border: 5px solid #000;
+            box-shadow: 10px 10px 0 #000; margin: 40px 0;
+        }
+
+        footer { padding: 50px; background: #000; color: #fff; width: 100%; text-align: center; border-top: 3px solid var(--orange); }
+    </style>
+</head>
+<body>
+
+    <div class="ticker-tape">
+        <div class="ticker-inner">
+            $ROGFRY &nbsp;★&nbsp; THE RICHEST FRY IN THE WORLD &nbsp;★&nbsp; SHE IS DIFFERENT &nbsp;★&nbsp; $ROGFRY &nbsp;★&nbsp; NO UTILITY, JUST POTATO ENERGY &nbsp;★&nbsp;
+        </div>
+    </div>
+
+    <nav class="social-nav">
+        <a href="https://x.com/TheRogfry" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M18.244 2.25h3.308l-7.227 8.26 8.502 11.24H16.17l-5.214-6.817L4.99 21.75H1.68l7.73-8.835L1.254 2.25H8.08l4.713 6.231zm-1.161 17.52h1.833L7.084 4.126H5.117z"></path></svg>
+        </a>
+        <a href="https://t.me/TheRogueFry" target="_blank">
+            <svg viewBox="0 0 24 24"><path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm4.64 6.8c-.15 1.58-.8 5.42-1.13 7.19-.14.75-.42 1-.68 1.03-.58.05-1.02-.38-1.58-.75-.88-.58-1.38-.94-2.23-1.5-.99-.65-.35-1.01.22-1.59.15-.15 2.71-2.48 2.76-2.69a.2.2 0 00-.05-.18c-.06-.05-.14-.03-.21-.02-.09.02-1.49.95-4.22 2.79-.4.27-.76.41-1.08.4-.36-.01-1.04-.2-1.55-.37-.63-.2-1.12-.31-1.08-.66.02-.18.27-.36.74-.55 2.92-1.27 4.86-2.11 5.83-2.51 2.78-1.16 3.35-1.36 3.73-1.36.08 0 .27.02.39.12.1.08.13.19.14.27-.01.06.01.24 0 .38z"></path></svg>
+        </a>
+    </nav>
+
+    <div class="hero">
+        <div class="ticker-float">$ROGFRY</div>
+        <h1>THE ROGUE FRY</h1>
+        <div class="different-badge">SHE'S DIFFERENT. SO WHAT?</div>
+        <p style="font-size: 1.8rem; margin-top: 50px; font-weight: bold;">
+            One unique soul found in a pack of the Others.<br>
+            Born to stand out, destined for the stars.
+        </p>
+        <a href="YOUR_PUMP_FUN_LINK" class="buy-button">GIVE HER A CHANCE</a>
+    </div>
+
+    <div class="evidence-section">
+        <h2 style="color: #FFD700; text-transform: uppercase; margin-bottom: 50px; font-size: 2.5rem;">The Origin Story</h2>
+        <div class="photo-frame">
+            <img src="smile.jpeg" alt="The Fry">
+        </div>
+        <div class="manifesto">
+            > I just wanted to make some frozen fries.<br>
+            > Then I found HER, sitting there among the others.<br>
+            > Different shade, different vibe, same smile.<br>
+            > I'm convinced she's meant for big things.<br>
+            > Don't let her be just another potato.<br>
+            > Let's send this legend to the moon. 🌕
+        </div>
+    </div>
+
+    <div class="goal-section">
+        <h2 class="goal-title">WHAT CAN WE DO FOR HER?</h2>
+        <div class="goal-container">
+            <p class="goal-text">
+                Let's give her value. Let's make her rich. <br>
+                <span class="goal-highlight">Richer than Elon Musk. Richer than Lionel Messi.</span><br>
+                Offer her the moon. She deserves it.
+            </p>
+            <p class="goal-statement">
+                THE GOAL: MAKE HER THE RICHEST FRY ON EARTH.
+            </p>
+        </div>
+    </div>
+
+    <div class="rich-list-section">
+        <h2 class="rich-list-title">WORLD WEALTH RANKING</h2>
+        <div class="ranking-container">
+            <div class="ranking-row">
+                <span class="rank">#1</span>
+                <span class="name">Elon Musk</span>
+                <span class="worth">$839,000,000,000</span>
+            </div>
+            <div class="ranking-row">
+                <span class="rank">#2</span>
+                <span class="name">Jeff Bezos</span>
+                <span class="worth">$224,000,000,000</span>
+            </div>
+            <div class="ranking-row">
+                <span class="rank">#3</span>
+                <span class="name">Taylor Swift</span>
+                <span class="worth">$2,000,000,000</span>
+            </div>
+            <div class="ranking-row">
+                <span class="rank">#4</span>
+                <span class="name">Cristiano Ronaldo</span>
+                <span class="worth">$1,000,000,000+</span>
+            </div>
+            <div class="ranking-row">
+                <span class="rank">#5</span>
+                <span class="name">Lionel Messi</span>
+                <span class="worth">$600,000,000</span>
+            </div>
+            <div class="ranking-row rogue">
+                <span class="rank">#6</span>
+                <span class="name">THE ROGUE FRY ($ROGFRY)</span>
+                <span class="worth" id="fry-status">SOON...</span>
+            </div>
+        </div>
+    </div>
+
+    <div class="wishlist-section">
+        <h2>The Wish List ✨</h2>
+        <p class="wishlist-subtitle">— not a roadmap. just her dreams. —</p>
+        <div class="wishlist-container">
+            <div class="wish-item">
+                <span class="wish-text">Survive the first 10 minutes on Pump.fun</span>
+                <span class="wish-tag real">SURVIVAL</span>
+            </div>
+            <div class="wish-item">
+                <span class="wish-text">Hit 100 holders — she is not alone anymore</span>
+                <span class="wish-tag real">MILESTONE</span>
+            </div>
+            <div class="wish-item">
+                <span class="wish-text">Run for president. Win. Probably.</span>
+                <span class="wish-tag absurd">POLITICS</span>
+            </div>
+            <div class="wish-item">
+                <span class="wish-text">$1M market cap — she did it</span>
+                <span class="wish-tag real">MILESTONE</span>
+            </div>
+            <div class="wish-item">
+                <span class="wish-text">NASA names a moon crater after her</span>
+                <span class="wish-tag absurd">SPACE</span>
+            </div>
+            <div class="wish-item">
+                <span class="wish-text">You retire. We all retire. 🏖️</span>
+                <span class="wish-tag final">ENDGAME</span>
+            </div>
+        </div>
+    </div>
+
+    <footer>
+        $ROGFRY — 2026. The rise begins here.NO UTILITY, JUST POTATO ENERGY
+    </footer>
+
+    <script>
+        const status = document.getElementById('fry-status');
+        setInterval(() => {
+            status.style.opacity = (status.style.opacity == '0' ? '1' : '0');
+        }, 800);
+    </script>
+</body>
+</html>
