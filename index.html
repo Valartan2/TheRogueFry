@@ -10,6 +10,7 @@
             --orange: #FF4500;
             --cream: #FFF9E5;
             --black: #0A0A0A;
+            --green: #00ff00;
         }
 
         * { box-sizing: border-box; transition: all 0.3s ease; }
@@ -104,27 +105,50 @@
             border: 3px solid var(--yellow); box-shadow: 12px 12px 0 rgba(0,0,0,0.1);
         }
 
-        /* RANKING SECTION */
+        /* RANKING SECTION WITH INTERNAL SCROLL */
         .rich-list-section {
             width: 100%; background: var(--black); color: white;
             padding: 80px 20px; display: flex; flex-direction: column; align-items: center;
         }
-        .rich-list-title { font-size: 2.2rem; color: var(--yellow); text-transform: uppercase; margin-bottom: 40px; text-align: center; }
-        .ranking-container { width: 100%; max-width: 800px; display: flex; flex-direction: column; gap: 8px; }
+        .rich-list-title { font-size: 2.2rem; color: var(--yellow); text-transform: uppercase; margin-bottom: 20px; text-align: center; }
+        
+        .ranking-scroll-box {
+            width: 100%;
+            max-width: 700px;
+            height: 550px;
+            overflow-y: scroll;
+            background: #111;
+            border: 4px solid var(--orange);
+            padding: 0 20px;
+            border-radius: 10px;
+        }
+
+        .ranking-scroll-box::-webkit-scrollbar { width: 8px; }
+        .ranking-scroll-box::-webkit-scrollbar-track { background: #000; }
+        .ranking-scroll-box::-webkit-scrollbar-thumb { background: var(--orange); border-radius: 10px; }
+
+        .tier-header {
+            background: #222; color: var(--yellow);
+            padding: 10px; margin: 20px 0 10px 0; font-size: 0.9rem;
+            text-align: center; border: 1px dashed var(--orange);
+            position: sticky; top: 0; z-index: 5;
+        }
+
         .ranking-row {
             display: flex; justify-content: space-between; align-items: center;
-            padding: 18px 25px; background: #111; border-radius: 5px;
+            padding: 12px 10px; background: #111; border-bottom: 1px solid #222;
         }
         .ranking-row.rogue {
             background: var(--yellow); color: var(--black);
-            transform: scale(1.02); z-index: 10;
-            box-shadow: 0 0 40px rgba(255, 215, 0, 0.4);
-            font-weight: 900;
+            font-weight: 900; border: 2px solid #000; margin: 10px 0;
+            position: sticky; bottom: 0;
         }
-        .rank { width: 50px; font-size: 1.5rem; opacity: 0.6; }
-        .name { flex: 1; font-size: 1.1rem; text-transform: uppercase; }
-        .worth { font-family: 'Courier New', monospace; font-size: 1.3rem; color: #00ff00; }
-        .rogue .worth { color: var(--black); font-style: italic; font-weight: 900; }
+        .rank { width: 40px; font-size: 1rem; opacity: 0.6; font-family: monospace; }
+        .name { flex: 1; font-size: 0.95rem; text-transform: uppercase; padding-left: 10px; }
+        .worth { font-family: 'Courier New', monospace; font-size: 1.1rem; color: var(--green); font-weight: bold; }
+        .rogue .worth { color: var(--black); animation: blink 1s infinite; }
+
+        @keyframes blink { 50% { opacity: 0; } }
 
         /* WISH LIST */
         .wishlist-section {
@@ -207,38 +231,110 @@
         </div>
     </div>
 
-    <div class="rich-list-section">
+   <div class="rich-list-section">
         <h2 class="rich-list-title">WORLD WEALTH RANKING</h2>
-        <div class="ranking-container">
-            <div class="ranking-row">
-                <span class="rank">#1</span>
-                <span class="name">Elon Musk</span>
-                <span class="worth">Worth: $839,000,000,000</span>
-            </div>
-            <div class="ranking-row">
-                <span class="rank">#2</span>
-                <span class="name">Jeff Bezos</span>
-                <span class="worth">Worth: $224,000,000,000</span>
-            </div>
-            <div class="ranking-row">
-                <span class="rank">#3</span>
-                <span class="name">Taylor Swift</span>
-                <span class="worth">Worth: $2,000,000,000</span>
-            </div>
-            <div class="ranking-row">
-                <span class="rank">#4</span>
-                <span class="name">Cristiano Ronaldo</span>
-                <span class="worth">Worth: $1,000,000,000+</span>
-            </div>
-            <div class="ranking-row">
-                <span class="rank">#5</span>
-                <span class="name">Lionel Messi</span>
-                <span class="worth">Worth: $600,000,000</span>
-            </div>
+        
+        <div class="ranking-scroll-box">
+            <div class="tier-header">$100B+ (THE TITANS)</div>
+            <div class="ranking-row"><span class="rank">1</span><span class="name">Elon Musk</span><span class="worth">$339B</span></div>
+            <div class="ranking-row"><span class="rank">2</span><span class="name">Jeff Bezos</span><span class="worth">$224B</span></div>
+            <div class="ranking-row"><span class="rank">3</span><span class="name">Mark Zuckerberg</span><span class="worth">$216B</span></div>
+
+            <div class="tier-header">$10B — $99B</div>
+            <div class="ranking-row"><span class="rank">4</span><span class="name">CZ (Binance)</span><span class="worth">$33B</span></div>
+            <div class="ranking-row"><span class="rank">5</span><span class="name">Brian Armstrong</span><span class="worth">$12B</span></div>
+
+            <div class="tier-header">$1B — $9B</div>
+            <div class="ranking-row"><span class="rank">6</span><span class="name">Jay-Z</span><span class="worth">$5.8B</span></div>
+            <div class="ranking-row"><span class="rank">7</span><span class="name">Kim Kardashian</span><span class="worth">$5.5B</span></div>
+            <div class="ranking-row"><span class="rank">8</span><span class="name">George Lucas</span><span class="worth">$5.2B</span></div>
+            <div class="ranking-row"><span class="rank">9</span><span class="name">Steven Spielberg</span><span class="worth">$4.8B</span></div>
+            <div class="ranking-row"><span class="rank">10</span><span class="name">Michael Jordan</span><span class="worth">$4.3B</span></div>
+            <div class="ranking-row"><span class="rank">11</span><span class="name">Vitalik Buterin</span><span class="worth">$4B</span></div>
+            <div class="ranking-row"><span class="rank">12</span><span class="name">Oprah Winfrey</span><span class="worth">$3.5B</span></div>
+            <div class="ranking-row"><span class="rank">13</span><span class="name">Tiger Woods</span><span class="worth">$3B</span></div>
+            <div class="ranking-row"><span class="rank">14</span><span class="name">Taylor Swift</span><span class="worth">$2B</span></div>
+            <div class="ranking-row"><span class="rank">15</span><span class="name">MrBeast</span><span class="worth">$2B</span></div>
+            <div class="ranking-row"><span class="rank">16</span><span class="name">Magic Johnson</span><span class="worth">$1.6B</span></div>
+            <div class="ranking-row"><span class="rank">17</span><span class="name">Rihanna</span><span class="worth">$1.4B</span></div>
+            <div class="ranking-row"><span class="rank">18</span><span class="name">Cristiano Ronaldo</span><span class="worth">$1B+</span></div>
+            <div class="ranking-row"><span class="rank">19</span><span class="name">LeBron James</span><span class="worth">$1B+</span></div>
+
+            <div class="tier-header">$500M — $999M</div>
+            <div class="ranking-row"><span class="rank">20</span><span class="name">Lionel Messi</span><span class="worth">$600M</span></div>
+            <div class="ranking-row"><span class="rank">21</span><span class="name">Elton John</span><span class="worth">$550M</span></div>
+            <div class="ranking-row"><span class="rank">22</span><span class="name">Dwayne Johnson</span><span class="worth">$800M</span></div>
+            <div class="ranking-row"><span class="rank">23</span><span class="name">Paul McCartney</span><span class="worth">$650M</span></div>
+            <div class="ranking-row"><span class="rank">24</span><span class="name">Madonna</span><span class="worth">$850M</span></div>
+            <div class="ranking-row"><span class="rank">25</span><span class="name">Floyd Mayweather</span><span class="worth">$450M</span></div>
+            <div class="ranking-row"><span class="rank">26</span><span class="name">Dr. Dre</span><span class="worth">$500M</span></div>
+            <div class="ranking-row"><span class="rank">27</span><span class="name">Roger Federer</span><span class="worth">$550M</span></div>
+            <div class="ranking-row"><span class="rank">28</span><span class="name">Neymar</span><span class="worth">$200M</span></div>
+            <div class="ranking-row"><span class="rank">29</span><span class="name">Serena Williams</span><span class="worth">$260M</span></div>
+            <div class="ranking-row"><span class="rank">30</span><span class="name">Kylie Jenner</span><span class="worth">$700M</span></div>
+
+            <div class="tier-header">$100M — $499M</div>
+            <div class="ranking-row"><span class="rank">31</span><span class="name">Schwarzenegger</span><span class="worth">$400M</span></div>
+            <div class="ranking-row"><span class="rank">32</span><span class="name">Tom Cruise</span><span class="worth">$400M</span></div>
+            <div class="ranking-row"><span class="rank">33</span><span class="name">Jerry Seinfeld</span><span class="worth">$400M</span></div>
+            <div class="ranking-row"><span class="rank">34</span><span class="name">Tyler Perry</span><span class="worth">$400M</span></div>
+            <div class="ranking-row"><span class="rank">35</span><span class="name">Kanye West</span><span class="worth">$400M</span></div>
+            <div class="ranking-row"><span class="rank">36</span><span class="name">Adam Sandler</span><span class="worth">$440M</span></div>
+            <div class="ranking-row"><span class="rank">37</span><span class="name">Kevin Hart</span><span class="worth">$200M</span></div>
+            <div class="ranking-row"><span class="rank">38</span><span class="name">Drake</span><span class="worth">$250M</span></div>
+            <div class="ranking-row"><span class="rank">39</span><span class="name">Leonardo DiCaprio</span><span class="worth">$300M</span></div>
+            <div class="ranking-row"><span class="rank">40</span><span class="name">Will Smith</span><span class="worth">$350M</span></div>
+            <div class="ranking-row"><span class="rank">41</span><span class="name">Nicki Minaj</span><span class="worth">$130M</span></div>
+            <div class="ranking-row"><span class="rank">42</span><span class="name">Katy Perry</span><span class="worth">$330M</span></div>
+            <div class="ranking-row"><span class="rank">43</span><span class="name">Ed Sheeran</span><span class="worth">$300M</span></div>
+            <div class="ranking-row"><span class="rank">44</span><span class="name">Justin Bieber</span><span class="worth">$300M</span></div>
+            <div class="ranking-row"><span class="rank">45</span><span class="name">The Weeknd</span><span class="worth">$300M</span></div>
+            <div class="ranking-row"><span class="rank">46</span><span class="name">Logan Paul</span><span class="worth">$245M</span></div>
+            <div class="ranking-row"><span class="rank">47</span><span class="name">KSI</span><span class="worth">$100M</span></div>
+            <div class="ranking-row"><span class="rank">48</span><span class="name">PewDiePie</span><span class="worth">$40M</span></div>
+            <div class="ranking-row"><span class="rank">49</span><span class="name">Jeffree Star</span><span class="worth">$200M</span></div>
+            <div class="ranking-row"><span class="rank">50</span><span class="name">Gary Vaynerchuk</span><span class="worth">$160M</span></div>
+            <div class="ranking-row"><span class="rank">51</span><span class="name">Eminem</span><span class="worth">$150M</span></div>
+            <div class="ranking-row"><span class="rank">52</span><span class="name">Harry Styles</span><span class="worth">$100M</span></div>
+            <div class="ranking-row"><span class="rank">53</span><span class="name">Roger Goodell</span><span class="worth">$175M</span></div>
+            <div class="ranking-row"><span class="rank">54</span><span class="name">Like Nastya</span><span class="worth">$125M</span></div>
+            <div class="ranking-row"><span class="rank">55</span><span class="name">Markiplier</span><span class="worth">$35M</span></div>
+
+            <div class="tier-header">$1M — $99M</div>
+            <div class="ranking-row"><span class="rank">56</span><span class="name">Billie Eilish</span><span class="worth">$50M</span></div>
+            <div class="ranking-row"><span class="rank">57</span><span class="name">Daddy Yankee</span><span class="worth">$50M</span></div>
+            <div class="ranking-row"><span class="rank">58</span><span class="name">Shawn Mendes</span><span class="worth">$50M</span></div>
+            <div class="ranking-row"><span class="rank">59</span><span class="name">Post Malone</span><span class="worth">$45M</span></div>
+            <div class="ranking-row"><span class="rank">60</span><span class="name">Jake Paul</span><span class="worth">$60M</span></div>
+            <div class="ranking-row"><span class="rank">61</span><span class="name">Ryan Kaji</span><span class="worth">$100M</span></div>
+            <div class="ranking-row"><span class="rank">62</span><span class="name">Emma Chamberlain</span><span class="worth">$12M</span></div>
+            <div class="ranking-row"><span class="rank">64</span><span class="name">Raoul Pal</span><span class="worth">$50M</span></div>
+            <div class="ranking-row"><span class="rank">65</span><span class="name">Tim Draper</span><span class="worth">$75M</span></div>
+            <div class="ranking-row"><span class="rank">66</span><span class="name">Sabrina Carpenter</span><span class="worth">$16M</span></div>
+            <div class="ranking-row"><span class="rank">67</span><span class="name">Olivia Rodrigo</span><span class="worth">$25M</span></div>
+            <div class="ranking-row"><span class="rank">68</span><span class="name">Bad Bunny</span><span class="worth">$40M</span></div>
+            <div class="ranking-row"><span class="rank">69</span><span class="name">Cardi B</span><span class="worth">$40M</span></div>
+            <div class="ranking-row"><span class="rank">70</span><span class="name">Peso Pluma</span><span class="worth">$15M</span></div>
+            <div class="ranking-row"><span class="rank">71</span><span class="name">Dua Lipa</span><span class="worth">$35M</span></div>
+            <div class="ranking-row"><span class="rank">72</span><span class="name">Zendaya</span><span class="worth">$20M</span></div>
+            <div class="ranking-row"><span class="rank">73</span><span class="name">Ice Spice</span><span class="worth">$4M</span></div>
+            <div class="ranking-row"><span class="rank">74</span><span class="name">Noah Kahan</span><span class="worth">$8M</span></div>
+            <div class="ranking-row"><span class="rank">75</span><span class="name">Tyla</span><span class="worth">$8M</span></div>
+            <div class="ranking-row"><span class="rank">76</span><span class="name">Chappell Roan</span><span class="worth">$10M</span></div>
+            <div class="ranking-row"><span class="rank">77</span><span class="name">Playboi Carti</span><span class="worth">$9M</span></div>
+            <div class="ranking-row"><span class="rank">78</span><span class="name">Lil Yachty</span><span class="worth">$9M</span></div>
+            <div class="ranking-row"><span class="rank">79</span><span class="name">Central Cee</span><span class="worth">$5M</span></div>
+            <div class="ranking-row"><span class="rank">80</span><span class="name">Baby Keem</span><span class="worth">$4M</span></div>
+            <div class="ranking-row"><span class="rank">81</span><span class="name">GloRilla</span><span class="worth">$3M</span></div>
+            <div class="ranking-row"><span class="rank">82</span><span class="name">Sexyy Red</span><span class="worth">$3M</span></div>
+            <div class="ranking-row"><span class="rank">83</span><span class="name">Yeat</span><span class="worth">$3M</span></div>
+            <div class="ranking-row"><span class="rank">84</span><span class="name">JID</span><span class="worth">$3M</span></div>
+            <div class="ranking-row"><span class="rank">85</span><span class="name">Latto</span><span class="worth">$4M</span></div>
+
             <div class="ranking-row rogue">
-                <span class="rank">#6</span>
+                <span class="rank">??</span>
                 <span class="name">THE ROGUE FRY ($ROGFRY)</span>
-                <span class="worth" id="fry-status">SOON...</span>
+                <span class="worth">CALCULATING...</span>
             </div>
         </div>
     </div>
@@ -283,11 +379,5 @@
         $ROGFRY — The rise begins here.
     </footer>
 
-    <script>
-        const status = document.getElementById('fry-status');
-        setInterval(() => {
-            status.style.opacity = (status.style.opacity == '0' ? '1' : '0');
-        }, 800);
-    </script>
 </body>
 </html>
