@@ -215,7 +215,7 @@
     animation:stripes 1s linear infinite; background-size:22px 22px, 100% 100% !important; }
   @keyframes stripes{ from{ background-position:0 0, 0 0; } to{ background-position:22px 0, 0 0; } }
   #home .hBar b{ font-size:20px !important; line-height:26px !important; }
-  #home #homeFresco{ filter:drop-shadow(0 6px 0 #0b255055); }
+  #home #homeFresco{ filter:drop-shadow(0 6px 0 #0b255055); } 
   /* skin sur son îlot */
   .hSkinWrap{ position:relative; display:flex; justify-content:center; align-items:flex-end; margin-top:clamp(10px, 3vh, 30px); }
   .hIsland{ position:absolute; bottom:-14px; left:50%; width:min(230px, 60vw); height:min(62px, 16vw); transform:translateX(-50%); border-radius:50%;
@@ -3452,7 +3452,7 @@ const edgeTile = i => { for (let d = 1; d <= FLOOR_THICK; d++) if (state[i - d *
 // Les grains qui tombent, les textes et le HUD restent dessinés en 2D par-dessus.
 // GPU_RENDER = false : retour à l'ancien rendu (tout en JavaScript). Si l'appareil n'a pas WebGL2, l'ancien rendu est utilisé automatiquement.
 const SAND_SMOOTH = true; // bords du sable lissés par la carte graphique (courbes nettes au lieu des carrés des grains)
-const SAND_RELIEF = DRONE_MODE ? 0 : 1; /* ← relief (bords ombrés + ombre portée) : coupé en mode ovni pour une peinture à plat, bords propres */ const DRONE_THICK = 5; // ← DRONE_THICK : épaisseur de la peinture (tranche plus sombre sous les bords, en rangées de grains, 6 max) ; 0 = peinture à plat, bords nets // RELIEF DU SABLE (rendu GPU) : rides de vent, bords arrondis éclairés, ombre portée dans les zones creusées (0 = plat)
+const SAND_RELIEF = DRONE_MODE ? 0 : 1; /* ← relief (bords ombrés + ombre portée) : coupé en mode ovni pour une peinture à plat, bords propres */ const DRONE_THICK = 6; // ← DRONE_THICK : épaisseur de la peinture (tranche plus sombre sous les bords, en rangées de grains, 6 max) ; 0 = peinture à plat, bords nets // RELIEF DU SABLE (rendu GPU) : rides de vent, bords arrondis éclairés, ombre portée dans les zones creusées (0 = plat)
 const GPU_RENDER = true, GPU_TILE = 1024, GPU_BG_ROWS = 4; // GPU_BG_ROWS : rangées revérifiées par image en tâche de fond (filet de sécurité)
 let GPU = null, gpuDirty = [], gpuFull = true, gpuBgRow = 0, gpuFailed = false;
 function gpuMark(x0, y0, x1, y1){ if (GPU) gpuDirty.push([x0, y0, x1, y1]); } // cases (x0..x1, y0..y1) à renvoyer au GPU
